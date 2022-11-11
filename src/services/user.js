@@ -31,21 +31,22 @@ const ClientUsers = {
         }
     },
 
-    async getUserbyEmail({email}) {
+    async getUserbyEmail(email) {
         try {
-            const response = await client.get(`${userPath}/get`, {
-                params: {
-                    email
-                }
+            const response = await client.get(`${userPath}/listUser`, {
+                email
             });
             return response.data;
         } catch (e) {
+            console.log(e);
             throw e;
         }
     },
+
     async getAllUsers() {
         try {
-            const response = await client.get(`${userPath}/get`);
+            const response = await client.get(`${userPath}/list`);
+            console.log(response.data);
             return response.data;
         } catch (e) {
             throw e;

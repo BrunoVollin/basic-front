@@ -9,27 +9,19 @@ import Title from '../../components/Title';
 
 import './style.css';
 
-export default function Create() {
+export default function Get() {
 
-    const {users, setUsers} = useState([{}]);
-    const {user, setUser} = useState({});
+    const [ users, setUsers ] = useState();
     const [email, setEmail] = useState('');
 
     const handleGetUsers = async () => {
         try {
             const response = await ClientUsers.getAllUsers();
-            setUser(response);
+            setUsers(response);
+            console.log(users);
         } catch (e) {
             toast.error('Erro ao buscar usuários');
-        }
-    }	
-    
-    const handleGetUserByEmail = async () => {
-        try {
-            const response = await ClientUsers.getUserbyEmail({email});
-            setUser(response);
-        } catch (e) {
-            toast.error('Erro ao buscar usuário');
+            console.log(e.response.data);
         }
     }
 
@@ -48,35 +40,14 @@ export default function Create() {
 
                 <h1>Todos os usuarios</h1>
 
-                {
-                    users.map((item, index) => {
-                        return (
-                            <div className="container" id={index}>
-                                <td>{item.name}</td>
-                                <td>{item.email}</td>
-                            </div>
-                        )
-                    })
-                }
-
-                <h1>Usuario por id</h1>
-
-
-                <form className="form-profile" onSubmit={handleGetUserByEmail}>
-                        <label>Email</label>
-                        <input type="text" value={email} onChange={(e) => setEmail(e.target.value)} />
-
-                        <button type="submit">Salvar</button>
-                </form>
-                {
-                    users.map((item, index) => {
-                        return (
-                            <div className="container" id={index}>
-                                <td>{item.name}</td>
-                                <td>{item.email}</td>
-                            </div>
-                        )
-                    })
+                {users &&
+                    users.map((item, index) => (
+                        <div className="container" id={index}>
+                            <h1>{item.name}</h1>
+                            <td>{item.email}</td>
+                        </div>
+                    )
+                    )
                 }
             </div>
         </div>

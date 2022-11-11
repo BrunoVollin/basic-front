@@ -22,6 +22,14 @@ export default function Sidebar() {
                 <FaUserMinus color="white" size={24} />
                 Deletar
             </Link>
+            <Link to="/get">
+                <FaUserMinus color="white" size={24} />
+                Ler
+            </Link>
+            <Link to="/getemail">
+                <FaUserMinus color="white" size={24} />
+                Ler por email
+            </Link>
         </div>
     )
 }
