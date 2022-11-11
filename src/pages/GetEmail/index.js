@@ -42,8 +42,8 @@ export default function GetEmail() {
 
 
             <div className="container" >
-                <td>{user?.name}</td>
-                <td>{user?.email}</td>
+                <td>nome: {user?.nome}, email: {user?.email}</td>
+
             </div>
 
             </div>

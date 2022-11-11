@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { FaUserPlus, FaUserEdit, FaUserMinus } from "react-icons/fa";
 
-import avatar from '../../assets/avatar.png';
+import avatar from './a.png';
 import './style.css';
 
 export default function Sidebar() {

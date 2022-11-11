@@ -43,8 +43,7 @@ export default function Get() {
                 {users &&
                     users.map((item, index) => (
                         <div className="container" id={index}>
-                            <h1>{item.name}</h1>
-                            <td>{item.email}</td>
+                            <td>NOME: {item.nome}, EMAIL: {item.email}</td>
                         </div>
                     )
                     )
