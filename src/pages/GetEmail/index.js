@@ -19,20 +19,17 @@ export default function GetEmail() {
         try {
             const response = await ClientUsers.getUserbyEmail(email);
             setUser(response);
+            console.log(response);
         } catch (e) {
             toast.error('Erro ao buscar usuários');
             console.log(e);
         }
     }
 
-    useEffect(() => {
-        handleGetUsers();
-    }, [])
-
     return (
         <div >
             <Sidebar />
-            <div style={{ display: 'flex', alignItems: 'center' }}>
+            <div style={{ marginLeft: 200 }}>
                 <h1>Usuario por Email</h1>
 
 
@@ -42,17 +39,13 @@ export default function GetEmail() {
 
                     <button type="submit">Salvar</button>
                 </form>
-                {
-                    user &&
-                    user.map((item, index) => {
-                        return (
-                            <div className="container" id={index}>
-                                <td>{item.name}</td>
-                                <td>{item.email}</td>
-                            </div>
-                        )
-                    })
-                }
+
+
+            <div className="container" >
+                <td>{user?.name}</td>
+                <td>{user?.email}</td>
+            </div>
+
             </div>
         </div>
     )

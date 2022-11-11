@@ -33,12 +33,12 @@ const ClientUsers = {
 
     async getUserbyEmail(email) {
         try {
-            const response = await client.get(`${userPath}/listUser`, {
-                email
+            const response = await client.patch(`${userPath}/listUser`, {
+                email: email
             });
+            console.log(response);
             return response.data;
         } catch (e) {
-            console.log(e);
             throw e;
         }
     },
